@@ -5,7 +5,7 @@ import { resolve } from "path"
 
 const migrationsPath = resolve(__dirname, "model/migration")
 
-export const AppDataSource = new DataSource({
+export const AppDataSource1 = new DataSource({
   type: "postgres",
   host: "localhost",
   port: 5432,
@@ -16,9 +16,4 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   logging: false,
   migrations: [`${migrationsPath}/*{.js,.ts}`]
-})
-
-export const userRepository = AppDataSource.getRepository(User).extend({
-  example() {
-  }
 })

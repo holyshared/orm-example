@@ -1,8 +1,14 @@
-import { AppDataSource, userRepository } from "./data-source"
+import { Repository } from "typeorm"
+import { AppDataSource1 } from "./data-source1"
+import { User } from "./model/entity/User"
 
-AppDataSource.initialize().then(async () => {
-  const s = await userRepository.find()
+type CustomUserRepository = Repository<User> & {
+  example(name: string) : Promise<User>
+}
 
-}).catch(err => {
-  console.log(err)
+export const UserRepository = AppDataSource1.getRepository(User).extend({
+  // thisのコンテキストがわかるように型を指定する
+  async example(this: CustomUserRepository, name: string) {
+    return this.createQueryBuilder().getOne()
+  }
 })
