@@ -1,6 +1,7 @@
-import { AppDataSource } from "./data-source"
+import { AppDataSource, userRepository } from "./data-source"
 
-AppDataSource.initialize().then((conn) => {
+AppDataSource.initialize().then(async () => {
+  const s = await userRepository.find()
 
 }).catch(err => {
   console.log(err)
