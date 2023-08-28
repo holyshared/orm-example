@@ -1,5 +1,5 @@
 import "reflect-metadata"
-import { DataSource } from "typeorm"
+import { DataSource, Repository } from "typeorm"
 import { User } from "./model/entity/User"
 import { resolve } from "path"
 
@@ -15,5 +15,16 @@ export const AppDataSource1 = new DataSource({
   entities: [User],
   synchronize: false,
   logging: false,
-  migrations: [`${migrationsPath}/*{.js,.ts}`]
+  migrations: [`${migrationsPath}/*{.ts,.js}`]
+})
+
+interface CustomUserRepository extends Repository<User> {
+  example(name: string) : Promise<User>
+}
+
+export const UserRepository = AppDataSource1.getRepository(User).extend({
+  // thisのコンテキストがわかるように型を指定する
+  async example(this: CustomUserRepository, name: string) {
+    return this.createQueryBuilder().getOne()
+  }
 })

@@ -8,6 +8,7 @@
    },
    "dependencies": {
       "@prisma/client": "5.2.0",
+      "bson-objectid": "^2.0.4",
       "pg": "^8.4.0",
       "reflect-metadata": "^0.1.13",
       "typeorm": "0.3.17"
