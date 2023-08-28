@@ -1,4 +1,4 @@
-# prisma-example
+# orm-example
 
 MongoDB -> PostgresはTypeORMが楽そう.... 
 
