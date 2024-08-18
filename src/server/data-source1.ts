@@ -3,6 +3,7 @@ import { DataSource, Repository } from "typeorm"
 import { User } from "./model/entity/User"
 import { resolve } from "path"
 import { Footwear } from "./model/entity/Footwear"
+import { Profile } from "./model/entity/Profile"
 
 const migrationsPath = resolve(__dirname, "model/migration")
 
@@ -13,7 +14,7 @@ export const AppDataSource1 = new DataSource({
   username: "example",
   password: "example",
   database: "example",
-  entities: [User, Footwear],
+  entities: [User, Footwear, Profile],
   synchronize: false,
   logging: false,
   migrations: [`${migrationsPath}/*{.ts,.js}`]

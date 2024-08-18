@@ -16,8 +16,8 @@
    "scripts": {
       "start": "ts-node src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs",
-      "migration:generate": "typeorm migration:generate -d dist/data-source.js",
-      "migration:run": "typeorm migration:run -d dist/data-source.js",
+      "migration:generate": "typeorm migration:generate -d dist/data-source1.js",
+      "migration:run": "typeorm migration:run -d dist/data-source1.js",
       "build": "tsc"
    }
 }
